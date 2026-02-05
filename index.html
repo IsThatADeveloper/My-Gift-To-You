@@ -1,0 +1,112 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #ffe6e6;
+        font-family: Arial, sans-serif;
+    }
+
+    main {
+        height: 70%;
+        width: 55%;
+        border: 1px solid red;
+        border-radius: 2.5%;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-weight: bold;
+        color: black;
+        font-size: 2.5rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        padding: 20px;
+    }
+
+    main:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 14px 35px rgba(0, 0, 0, 0.2);
+    }
+
+    .photo {
+        width: 150px;
+        margin-bottom: 20px;
+    }
+
+    .buttons {
+        margin-top: 30px;
+        display: flex;
+        gap: 20px;
+    }
+
+    button {
+        padding: 12px 28px;
+        font-size: 1.2rem;
+        border-radius: 25px;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+
+    #yes {
+        background-color: #ff4d6d;
+        color: white;
+        transform: scale(1);
+    }
+
+    #no {
+        background-color: #ccc;
+    }
+</style>
+
+<body>
+
+    <main>
+        <img class="photo" src="img/image.png" alt="">
+        Jessica will you be my Valentine?
+
+        <div class="buttons">
+            <button id="yes">YES</button>
+            <button id="no">NO</button>
+        </div>
+    </main>
+
+    <script>
+        let scale = 1;
+        const yesBtn = document.getElementById("yes");
+        const noBtn = document.getElementById("no");
+
+        noBtn.addEventListener("mouseenter", () => {
+            // grow YES button
+            scale += 0.15;
+            yesBtn.style.transform = `scale(${scale})`;
+
+            // move NO button slightly away
+            const x = Math.random() * 200 - 100; // -20 to 20 px
+            const y = Math.random() * 200 - 100;
+
+            noBtn.style.transform = `translate(${x}px, ${y}px)`;
+        });
+
+        yesBtn.addEventListener("click", () => {
+            yesBtn.innerText = "YIPPIEEEE 💖";
+            noBtn.style.display = "none";
+        });
+    </script>
+
+
+</body>
+
+</html>
