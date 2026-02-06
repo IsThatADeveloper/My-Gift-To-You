@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+
 </head>
 
 <style>
@@ -14,7 +17,7 @@
         height: 100vh;
         margin: 0;
         background-color: #ffe6e6;
-        font-family: Arial, sans-serif;
+        font-family: 'Poppins', sans-serif;
     }
 
     main {
@@ -69,6 +72,13 @@
     #no {
         background-color: #ccc;
     }
+
+    @keyframes fade {
+        to {
+            opacity: 0;
+            transform: translateY(-100px);
+        }
+    }
 </style>
 
 <body>
@@ -94,16 +104,46 @@
             yesBtn.style.transform = `scale(${scale})`;
 
             // move NO button slightly away
-            const x = Math.random() * 200 - 100; // -20 to 20 px
-            const y = Math.random() * 200 - 100;
+            const x = Math.random() * 400 - 300; // -20 to 20 px
+            const y = Math.random() * 400 - 300;
 
             noBtn.style.transform = `translate(${x}px, ${y}px)`;
         });
 
         yesBtn.addEventListener("click", () => {
-            yesBtn.innerText = "YIPPIEEEE 💖";
+            yesBtn.innerText = "YAY 💖";
             noBtn.style.display = "none";
         });
+
+        yesBtn.addEventListener("click", () => {
+            for (let i = 0; i < 12; i++) {
+                const heart = document.createElement("span");
+                heart.innerText = "💖";
+                heart.style.position = "fixed";
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.top = "50vh";
+                heart.style.fontSize = "24px";
+                heart.style.animation = "fade 1.5s ease forwards";
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 1500);
+            }
+        });
+
+        // Heart animation
+        const style = document.createElement('style');
+        style.innerHTML = `
+        @keyframes fade {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-200px);
+            }
+        }
+    `;
+        document.head.appendChild(style);
     </script>
 
 
